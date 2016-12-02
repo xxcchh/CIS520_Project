@@ -10,7 +10,8 @@ function [Y_hat] = predict_labels(word_counts, cnn_feat, prob_feat, color_feat, 
 % Outputs:  Y_hat           nx1 predicted labels (1 for joy, 0 for sad)
 addpath('./liblinear');
 load svmModel.mat;
-n = size(word_counts, 1);
+testdat = full(word_counts);
+n = size(testdat, 1);
 Ytemp = zeros(n, 1);
-Y_hat = full(predict(Ytemp, word_counts, svmModel));
+Y_hat = full(predict((svmModel, testdat, Ytemp)));
 end
