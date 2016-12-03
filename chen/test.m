@@ -1,7 +1,7 @@
 %% load data 
 load data.mat
 %% test
-Ypred = predict_labels(X);
+Ypred = predict_labels(word_counts, cnn_feat, prob_feat, color_feat, raw_imgs, raw_tweets);
 %%
 %feature use
 n = size(X, 1);
@@ -11,20 +11,34 @@ Xtest = X(testIdx, :);
 Y = full(Y);
 Ytrain = Y(trainIdx, :);
 Ytest = Y(testIdx, :);
-%% words
+%% methods
 % svm
 % ridge/lars
+% naive bayes
+% boost 
+%% add ngrams 
+idxMat = raw_tweets_train{1,1};  
+idxTweets = tweet_ids;
+raw_tweets = raw_tweets_train{1, 2};
+%% find raw text
+tweetsTrain = cell(n, 1);
+for i = 1:n
+    idx = find(idxMat == idxTweets(i));%there is one duplicate on 7 and 
+    idx = idx(1);
+    tweetsTrain{i} = char(raw_tweets(idx)); 
+end
+%% ngrams
+Xngrams = build_ngrams(tweetsTrain);
+Xnew = [X'; Xngrams']'; 
 %% svm
-addpath('./liblinear');
-%%
-best = train(Y, X, '-C -s 2');
-svmModel = train(Y, X, sprintf('-c %f -s 0', best(1)));
+addpath('./liblinear')
+best = train(Y, Xnew, '-C -s 2');
+svmModel = train(Y, Xnew, sprintf('-c %f -s 0', best(1)));
 save('svmModel.mat', 'svmModel');
-% [Ypred, acc] = predict(Ytest, Xtest, svmModel);
-% opts = struct('Optimizer','bayesopt', 'CVPartition',c,...
+% c = cvpartition(n, 'KFold', 10);
+% opts = struct('Optimizer','bayesopt', ...
 %     'AcquisitionFunctionName','expected-improvement-plus');
-% svmModel = fitcsvm(X, Y, 'KernelFunction','rbf',...
+% svmModel = fitcsvm(full(X), full(Y), 'KernelFunction','rbf',...
 %     'OptimizeHyperparameters','auto','HyperparameterOptimizationOptions',opts);
 %%
-
 

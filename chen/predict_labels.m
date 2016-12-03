@@ -1,4 +1,4 @@
-function [Y_hat] = predict_labels(word_counts, cnn_feat, prob_feat, color_feat, raw_imgs, raw_tweets)
+function Y_hat = predict_labels(word_counts, cnn_feat, prob_feat, color_feat, raw_imgs, raw_tweets)
 % Inputs:   word_counts     nx10000 word counts features
 %           cnn_feat        nx4096 Penultimate layer of Convolutional
 %                               Neural Network features
@@ -12,5 +12,8 @@ addpath('./liblinear');
 load svmModel.mat;
 n = size(word_counts, 1);
 Ytemp = zeros(n, 1);
-Y_hat = full(predict(Ytemp, word_counts, svmModel));
+X = sparse(word_counts);
+Xngrams = build_ngrams(raw_tweets);
+Xnew = [X'; Xngrams']';
+Y_hat = predict(Ytemp, Xnew, svmModel);
 end
