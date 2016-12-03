@@ -1,0 +1,48 @@
+\documentclass[]{article}
+\usepackage{amsfonts,amssymb,amsmath}
+%\documentstyle[12pt,amsfonts]{article}
+%\documentstyle{article}
+
+\setlength{\topmargin}{-.5in}
+\setlength{\oddsidemargin}{0 in}
+\setlength{\evensidemargin}{0 in}
+\setlength{\textwidth}{6.5truein}
+\setlength{\textheight}{8.5truein}
+\setcounter{MaxMatrixCols}{16}
+%\input ../basicmath/basicmathmac.tex
+%
+%\input ../adgeomcs/lamacb.tex
+\input ./mac-new.tex
+\input ./mathmac-v2.tex
+%\input ../adgeomcs/mac.tex
+%\input ../adgeomcs/mathmac.tex
+
+\def\fseq#1#2{(#1_{#2})_{#2\geq 1}}
+\def\fsseq#1#2#3{(#1_{#3(#2)})_{#2\geq 1}}
+\def\qleq{\sqsubseteq}
+
+%
+\begin{document}
+
+\title{\TeX\ and \LaTeX}   % type title between braces
+\author{Tom Scavo}         % type author(s) between braces
+\date{October 27, 1995}    % type date between braces
+\maketitle
+
+\begin{abstract}
+  A brief introduction to \TeX\ and \LaTeX
+\end{abstract}
+
+\chapter{\TeX}             % chapter 1
+\section{Introduction}     % section 1.1
+\subsection{History}       % subsection 1.1.1
+
+\chapter{\LaTeX}           % chapter 2
+\section{Introduction}     % section 2.1
+\subsection{Usage}         % subsection 2.1.1
+
+\begin{thebibliography}{9}
+  % type bibliography here
+\end{thebibliography}
+
+\end{document}
