@@ -13,12 +13,8 @@ load svmModel.mat;
 testdat = full(word_counts);
 n = size(testdat, 1);
 Ytemp = zeros(n, 1);
-<<<<<<< HEAD
 X = sparse(word_counts);
 Xngrams = build_ngrams(raw_tweets);
 Xnew = [X'; Xngrams']';
 Y_hat = predict(Ytemp, Xnew, svmModel);
-=======
-Y_hat = full(predict((svmModel, testdat, Ytemp)));
->>>>>>> d0237d4313a0a9ccc90adf0a11ce92bb4dbeccac
 end
