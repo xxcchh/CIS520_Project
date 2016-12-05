@@ -41,4 +41,8 @@ save('svmModel.mat', 'svmModel');
 % svmModel = fitcsvm(full(X), full(Y), 'KernelFunction','rbf',...
 %     'OptimizeHyperparameters','auto','HyperparameterOptimizationOptions',opts);
 %%
+% ridge 
+k = 0:1e-5:5e-3;
+b = ridge(Y, Xnew, k);
+%%
 
