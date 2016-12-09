@@ -1,4 +1,4 @@
-function [CV_error, SVMmodel] = SVMwords(train_color,Y)
+function [CV_error, SVMmodel] = SVMwords(train_color,words_train)
 %crossvalidation
 k=10; %k fold Cross-Validation
 trainsetpart=make_xval_partition(size(train_color,1),k);
