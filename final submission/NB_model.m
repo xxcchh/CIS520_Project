@@ -13,12 +13,11 @@ for i = 1:5
     mod = fitcnb(X1(train,:),Y1(train,:),'Distribution','mn');
     predicted_labels = predict(mod ,X1(test,:));
     
-    fold_error = (sum(Y1(test,:) ~= predicted_labels))/length(Y1(test,:))
+    fold_error = (sum(Y1(test,:) ~= predicted_labels))/length(Y1(test,:));
 
     total_error = total_error + fold_error;
 end
 CV_error = total_error/10; 
-
 NB_Model_final = fitcnb(X1(train,:),Y1(train,:), 'Distribution','mn');
 
 save NBModel NB_Model_final;
