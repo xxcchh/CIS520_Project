@@ -1,5 +1,5 @@
-clear;
-load ../train_set/words_train
+function [CV_error, KNNmodel] = knnWords(words_train)
+
 % K = 5;
 K = 449;
 % n = size(X, 1);
@@ -22,6 +22,13 @@ K = 449;
 % err = mean(c);
 Mdl = fitcknn(X,Y,'Distance','spearman',...
     'NumNeighbors', K, 'KFold', 10);
-err = kfoldLoss(Mdl);
+
+CV_error = kfoldLoss(Mdl);
+
+save KNN_Model Mdl;
+
+end 
 
 
+
+    
