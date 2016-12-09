@@ -1,5 +1,6 @@
+function [ err, Mdl] = KNN_model( X, Y )
 clear;
-load ../train_set/words_train
+load words_train.mat
 % K = 5;
 K = 449;
 % n = size(X, 1);
@@ -23,5 +24,5 @@ K = 449;
 Mdl = fitcknn(X,Y,'Distance','spearman',...
     'NumNeighbors', K, 'KFold', 10);
 err = kfoldLoss(Mdl);
-
+end
 
