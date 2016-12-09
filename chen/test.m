@@ -32,8 +32,8 @@ Xngrams = build_ngrams(tweetsTrain);
 Xnew = [X'; Xngrams']'; 
 %% svm
 addpath('./liblinear')
-best = train(Y, Xnew, '-C -s 2');
-svmModel = train(Y, Xnew, sprintf('-c %f -s 0', best(1)));
+best = train(full(Y), X, '-C -s 2');
+svmModel = train(full(Y), X, sprintf('-c %f -s 0', best(1)));
 save('svmModel.mat', 'svmModel');
 % c = cvpartition(n, 'KFold', 10);
 % opts = struct('Optimizer','bayesopt', ...
