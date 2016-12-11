@@ -1,0 +1,42 @@
+\documentclass[]{article}
+\usepackage{amsfonts,amssymb,amsmath}
+%\documentstyle[12pt,amsfonts]{article}
+%\documentstyle{article}
+
+\setlength{\topmargin}{-.5in}
+\setlength{\oddsidemargin}{0 in}
+\setlength{\evensidemargin}{0 in}
+\setlength{\textwidth}{6.5truein}
+\setlength{\textheight}{8.5truein}
+\setcounter{MaxMatrixCols}{16}
+%\input ../adgeomcs/mac.tex
+%\input ../adgeomcs/mathmac.tex
+
+\def\fseq#1#2{(#1_{#2})_{#2\geq 1}}
+\def\fsseq#1#2#3{(#1_{#3(#2)})_{#2\geq 1}}
+\def\qleq{\sqsubseteq}
+
+%
+\begin{document}
+
+\title{CIS520 Report: ML Crackers}   % type title between braces
+\author{Francine Leech, Ziyin Qu, Chen Xiang}         % type author(s) between braces
+\date{December 12, 2016}    % type date between braces
+\maketitle
+
+\section*{Preliminary}
+When starting with the project, we thought that we should first try different methods on image data like train\_color, train\_img\_prob and etc. To some extent, the image data may contain some information about people's sentiments. For example, lighter color may means joy, darker color may means sadness. \\\\
+Because the image data alwats contains a lot of features, so the method we use for image data is PCA and Gaussian Mixture Model. With PCA, we can reduce the dimensions of features, with GMM, if it works, we may cluster the trainning data into two clusters, joy and sadness and thus get the trained classifier. \\\\
+For the trainning, we tried three datasets for PCA and GMM, that is train\_color, train\_img\_prob and train\_cnn\_feat. However, the results are not satisfying. The table below demonstrates the trainning accuracies with PCA and GMM on the three datasets.
+\[
+\begin{tabular}{|c|c|c|c|}
+\hline &train\_color & train\_img\_prob & train\_cnn\_feat\\
+\hline PCA and GMM&59\%&58\%&59\%\\
+\hline
+\end{tabular}
+\]
+We did not use cross validation for tunning the parameters becasue the trainning process will take a large amount of time and instead we used 4000 data to train and 500 hold out to test. We trained the image data in this way. We trained two GMM respectively for joy and sadness and each GMM has 5 clusters. For the PCA, we tried different numbers principle components for the three dataset but the results did not improve much.\\\\
+We think the reason why PCA and GMM did not work on image data may because the image data itself does not contain enough information for this method to get a classifier, unlike other classical clustering problems like human face recognition or male and female recognition. The accuracy is not enough to beat the baseline 1, so we have to try different methods.
+
+
+\end{document}
