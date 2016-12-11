@@ -2,6 +2,7 @@
 \usepackage{amsfonts,amssymb,amsmath}
 %\documentstyle[12pt,amsfonts]{article}
 %\documentstyle{article}
+\usepackage{biblatex}
 
 \setlength{\topmargin}{-.5in}
 \setlength{\oddsidemargin}{0 in}
@@ -48,14 +49,15 @@ Accuracy
 The second main
 
 \subsection{GentleBoost}
-The second main method we utilized was an ensemble method. We used GentleBoost, a weak learning that was built by MATLAB under the fitensemble function. The method combines many weak learners into one high quality ensemble predictor. We chose this ensemble methods over the others offered by MATLAB, because it is preforms well with binary classification trees with many predictors (\cite{•}). \\
+The second main method we utilized was an ensemble method. We used GentleBoost, a weak learning that was built by MATLAB under the fitensemble function. The method combines many weak learners into one high quality ensemble predictor. We chose this ensemble methods over the others offered by MATLAB, because it is preforms well with binary classification trees with many predictors (ensemble citation). \\
 
-The input of the model was the word_train data. We used a 10-fold cross validation method to observed how the model preformed, specified the use 300 learners, and the type of learner as 'tree'. The average cross validation error was 0.21. The algorithm classified joy and sadness well. \\
+The input of the model was the $word_train$ data. We used a 10-fold cross validation method to observed how the model preformed, specified the use 300 learners, and the type of learner as 'tree'. The average cross validation error was 0.21. The algorithm classified joy and sadness well. \\
 
 The method could have improved if we increased the number of learners, however it would have taken a very long time to train because the data is large. Initially we tried the method with the default number of learners, 100 trees, and found that the cross validation accuracy only improved slightly. This slight improvement with triple number of learners reveals that the data has some intricacies or patterns that the ensemble method cannot learn.   
 
 
-\subsection{SVM}
+\subsection{Support Vector Machine}
+
 
 
 Accuracy 
@@ -74,8 +76,10 @@ dictionry wasn't as good
 \section{Discussion}
 
 \section{Works Cited}
+\begin{thebibliography}{1}
 
-"Documentation." Ensemble Methods - MATLAB & Simulink. N.p., n.d. Web. 11 Dec. 2016.
+%\bibitem{ensemble} Documentation. Ensemble Methods - MATLAB & Simulink. N.p., n.d. Web. 11 Dec. 2016. 
 
+\end{thebibliography}
 
 \end{document}
