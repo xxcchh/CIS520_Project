@@ -1,0 +1,33 @@
+\documentclass[]{article}
+\usepackage{amsfonts,amssymb,amsmath}
+%\documentstyle[12pt,amsfonts]{article}
+%\documentstyle{article}
+
+\setlength{\topmargin}{-.5in}
+\setlength{\oddsidemargin}{0 in}
+\setlength{\evensidemargin}{0 in}
+\setlength{\textwidth}{6.5truein}
+\setlength{\textheight}{8.5truein}
+\setcounter{MaxMatrixCols}{16}
+%\input ../adgeomcs/mac.tex
+%\input ../adgeomcs/mathmac.tex
+
+\def\fseq#1#2{(#1_{#2})_{#2\geq 1}}
+\def\fsseq#1#2#3{(#1_{#3(#2)})_{#2\geq 1}}
+\def\qleq{\sqsubseteq}
+
+%
+\begin{document}
+
+\title{CIS520 Report: ML Crackers}   % type title between braces
+\author{Francine Leech, Ziyin Qu, Chen Xiang}         % type author(s) between braces
+\date{December 12, 2016}    % type date between braces
+\maketitle
+
+\section*{Naive Bayes}
+For supervised learning, Naive Bayes method is a very good generative method on classifying texts, like spam classification problem. Actually the words\_train data set uses bag of words model where counts of words matters and position of words does not matter. There are lots of advantages for Naive Bayes model, it can be a dependable baselien for text classification, it trains fast. Although the assumption of Naive Bayes which is the Conditional Independence Assumption may not be true, it may still work well on text classification problem.\\\\
+To use the Naive Bayes model on words\_train dataset, we use the built-in matlab function fitNaiveBayes. For trainning data, we sue 9-fold cross validation error to estimate the test error for Naive Bayes model, which means we randomly choose 4000 data to train and 500 data to test. For the built-in function fitNaiveBayes, there are some parameters for us to choose, for the distribution parameter, because we are using the bag-of-words model, we use the multinomial distribution in the fitNaiveBayes function. \\\\
+The Naive Bayes model actually works really well. We got around 0.8 cross validation accuracy on trainning data. And we got 0.7962 accuracy for the test data. We successfully beat the baseline1 using a simple Naive Bayes model with multinomial distribution. \\\\
+But there are still problems with the simple Naive Bayes model. For example, the dataset matrix for words is very sparse, and for each observation there are many  words did not show up. Naive Bayes model for text assumes that there is no information in words that are not observed and this may cause overfitting. We can solve this by smoothing the Naive Bayes model. 
+
+\end{document}
