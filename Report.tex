@@ -32,14 +32,15 @@
 
 \section{Introduction}
 
+The rise in web and mobile based social networking has opened a stream of continuous text data. These data reflect the sentiment of individuals and masses of people. Understanding the sentiment of users is relevant on the most basic level, understanding how people are responding to a stimuli, and extending to human machine interaction systems. The ambiguity of language and emotional expression creates an interesting machine learning problem.  We try to tackle one aspect of this problem by classifying tweets into two categories, joy and sadness. 
 
 \section{Preliminary Methods}
 
-When starting with the project, we thought that we should first try different methods on image data like train\_color, train\_img\_prob and etc. To some extent, the image data may contain some information about people's sentiments. For example, lighter color may means joy, darker color may means sadness. \\\\
+When starting the project, we thought that we should first experiment with different classification methods on image data like train\_color, train\_img\_prob because they were smaller datasets. Using our inuition we made the assumption that the image data contained basic information about people's sentiments. For example, lighter and bright colors represent joy, darker colors represent sadness. \\\\
 
-Because the image data alwats contains a lot of features, so the method we use for image data is PCA and Gaussian Mixture Model. With PCA, we can reduce the dimensions of features, with GMM, if it works, we may cluster the trainning data into two clusters, joy and sadness and thus get the trained classifier. \\\\
+Because the image data alwats contains a lot of features, so the method we use for image data is PCA and Gaussian Mixture Model. With PCA, we can reduce the dimensions of features, with GMM, if it works, we may cluster the training data into two clusters, joy and sadness and thus get the trained classifier. \\\\
 
-For the trainning, we tried three datasets for PCA and GMM, that is train\_color, train\_img\_prob and train\_cnn\_feat. However, the results are not satisfying. The table below demonstrates the trainning accuracies with PCA and GMM on the three datasets.
+For the training, we tried three datasets for PCA and GMM, that is train\_color, train\_img\_prob and train\_cnn\_feat. However, the results are not satisfying. The table below demonstrates the trainning accuracies with PCA and GMM on the three datasets.
 
 \[
 \begin{tabular}{|c|c|c|c|}
@@ -49,7 +50,7 @@ For the trainning, we tried three datasets for PCA and GMM, that is train\_color
 \end{tabular}
 \]
 
-We did not use cross validation for tunning the parameters becasue the trainning process will take a large amount of time and instead we used 4000 data to train and 500 hold out to test. We trained the image data in this way. We trained two GMM respectively for joy and sadness and each GMM has 5 clusters. For the PCA, we tried different numbers principle components for the three dataset but the results did not improve much.\\\\
+We did not use cross validation for tuning the parameters because the training process will take a large amount of time and instead we used 4000 data to train and 500 hold out to test. We trained the image data in this way. We trained two GMM respectively for joy and sadness and each GMM has 5 clusters. For the PCA, we tried different numbers principle components for the three dataset but the results did not improve much.\\\\
 
 We think the reason why PCA and GMM did not work on image data may because the image data itself does not contain enough information for this method to get a classifier, unlike other classical clustering problems like human face recognition or male and female recognition. The accuracy is not enough to beat the baseline 1, so we have to try different methods.
 
