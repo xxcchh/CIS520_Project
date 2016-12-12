@@ -62,8 +62,13 @@ $$Graph with PCA/GMM error/accuracy$$
 
 We found that even with 
 
+KMeans 
+
 
 \section{Main Methods}
+
+Here we describe the combination of models we used in our model. 
+
 
 \subsection{Naive Bayes}
 
@@ -103,18 +108,23 @@ Lastly we optimized our SVM by using MATLABs built in method to optimize a cross
 
 \section{Final Method}
 
-Ensembl: Sentiment Analysis 1 + Methods \\
-(1) First, we use vader package in python to do sentimental analysis on each word shown on topwords list. Vader is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media.
-The input is the every word in topwords list and the output is the probability of negative, positive and neutral emotion that this word may express. \\
-The output often looks like this, when type "funny" we can see \{'compound': 0.4404, 'neg': 0.0, 'neu': 0.0, 'pos': 1.0\}, which means it is an extremely postive word. \\
-(2) Second, we attach those scores to every word in topwords list. The advantage is that, we can use this preliminary method to choose the extremely positive and extremely negative sentences by assuming that there are no
-extreme positive words shown in negative sentences and vise versa. \\
+Our final method utilizes sentiment analysis, the classification of text into categories of emotions. We used the vaderSentiment 2.4.1 package in Python. VADER is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media. The advantage of this analysis is that we can use this preliminary method to discern extremely positive and extremely negative tweets by assuming that there are no extremely positive words shown in negative sentences and vise versa. \\
 
-Ensembl: Sentiment Analysis 2 + Methods\\
-From the raw tweets we notice that there are some words begin with \#, which may represent the topic this sentence belongs to. It is useful since some specific topics always express similar emotions, like \#family usually means positive.
-So instead of analyzing the sentiment of each word, we can use sentence as the input and in this way get the average emotion scores of each word.\\
-(1) First, do sentimental analysis on each sentence in raw tweets. For all the words that appear in this sentence, attach the result score to this words. \\
-(2) Second, for every word we can get the average emotion score based on all the sentences that they have shown.
+\subsection{Sentiment Analysis 1}
+
+In Python, we ran a sentimental analysis on each word present in the topwords\.csv. The input was each individual word in the list, and the output was the probability the word expresses a negative, positive, and neutral emotion. The output often looks like this, when type "funny" we can see \{'compound': 0.4404, 'neg': 0.0, 'neu': 0.0, 'pos': 1.0\}, which means it is an extremely postive word. \\
+
+
+\subsection{Sentiment Analysis 2}
+
+An issue we came across is from our first sentiment analysis is that we did not consider the raw tweets containing words that began with \#. These hashtags may represent the topic this sentence belongs to, some specific topics always express similar emotions, like \#family usually expresses a positive emotion. So instead of analyzing the sentiment of each word, we used sentence as the input and received the average emotion scores of each word.\\
+
+We ran the sentimental analysis on each raw tweet using VADER package. For all the words that appeared in this sentence, we attached the resulting score to those words. For every word, an average emotion score is then based on all the raw tweets. \\ 
+
+\subsection{Ensemble Method}
+
+
+
 
 %Bar graph with the two errors 
 
@@ -123,7 +133,18 @@ So instead of analyzing the sentiment of each word, we can use sentence as the i
 
 \section{Discussion}
 
-- NLP - difficulty with classification 
+Sentiment analysis is a difficult problem because human emotion is multifaceted and varies in intensity. In person, understanding the emotion a person is based on several parameters, the context of what they're saying, their words, tone, body language, and facial expression. Our classification problem is more difficult because we are given short tweets with a corresponding image. \\
+
+One issue 
+Issues with Lexicon
+Developing the content of the lexicon is subjective. The use of language changes - how old is the lexicon being used? We don't know if the lexicon is comprehensive enough. Lexicon with emojis. 
+
+What would our future method look like?
+- Train classifier that train on emojis and hashtags since they are usually represent the topic of the tweet
+
+
+Neutral tweets 
+
 
 - Could have used deep learning 
 	too long, overfit, dataset small
