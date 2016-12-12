@@ -33,51 +33,44 @@
 
 \section{Introduction}
 
-The rise in web and mobile based social networking has opened a stream of continuous text data. These data reflect the sentiment of individuals and masses of people. Understanding the sentiment of users is relevant on the most basic level, understanding how people are responding to a stimuli, and extending to human machine interaction systems. The ambiguity of language and emotional expression creates an interesting machine learning problem.  We try to tackle one aspect of this problem by classifying tweets into two categories, joy and sadness. 
+The rise in web and mobile based social networking has opened a stream of continuous text data. These data reflect the sentiment of individuals and masses of people. Understanding the sentiment of users is relevant on the most basic level, understanding how people are responding to a stimulus, and extending to human machine interaction systems. The ambiguity of language and emotional expression creates an interesting machine learning problem.  We try to tackle one aspect of this problem by classifying tweets into two categories, joy and sadness. 
 
 \section{Preliminary Methods}
 
-When starting the project, we thought that we should first experiment with different classification methods on image data like train\_color, train\_img\_prob because they were smaller datasets. Using our inuition we made the assumption that the image data contained basic information about people's sentiments. For example, lighter and bright colors represent joy, darker colors represent sadness. \\\\
+When starting the project, we thought that we should first experiment with different classification methods on the image data (train\_color, train\_img\_prob) because they were smaller datasets to observe how well they predicted our emotions of interest. Using our intuition, we hypothesized that the image data contained basic information about people's sentiments. For example, lighter and bright colors represent joy, darker colors represent sadness. We tried to reduce the image datasets by preforming Principal Component Analysis (PCA) with the idea that with the main principal components our model would fit the transformed data well and have a high testing accuracy. The PCA-ed data was an input into a Gaussian Mixture Model(GMM) with two clusters specified, where one cluster was joy and the other sadness. Similarly, we used the same apporach on the word\_train data. 10-fold cross validation is time intensive with PCA, so we used a 'holdout' of 20\% of the train data to use as testing because cross validation with PCA took too long. \\
 
-Because the image data alwats contains a lot of features, so the method we use for image data is PCA and Gaussian Mixture Model. With PCA, we can reduce the dimensions of features, with GMM, if it works, we may cluster the training data into two clusters, joy and sadness and thus get the trained classifier. \\\\
 
-For the training, we tried three datasets for PCA and GMM, that is train\_color, train\_img\_prob and train\_cnn\_feat. However, the results are not satisfying. The table below demonstrates the trainning accuracies with PCA and GMM on the three datasets.
+!!!!!!KMeans  \\
 
-\[
-\begin{tabular}{|c|c|c|c|}
-\hline &train\_color & train\_img\_prob & train\_cnn\_feat\\
-\hline PCA and GMM&59\%&58\%&59\%\\
-\hline
-\end{tabular}
-\]
 
-We did not use cross validation for tuning the parameters because the training process will take a large amount of time and instead we used 4000 data to train and 500 hold out to test. We trained the image data in this way. We trained two GMM respectively for joy and sadness and each GMM has 5 clusters. For the PCA, we tried different numbers principle components for the three dataset but the results did not improve much.\\\\
+The results were not great (Figure 1). The image data train\_color, train\_img\_prob had high error between 0.40 and 0.50. The PCA and GMM model on train\_words had comparable error to the error of the same model trained on the image data. Kmeans preformed the worst out of all our preliminary models. We tried training the models by changing the number of clusters in the GMM and PCs in the PCA. The results were similar to our initial results. \\
 
-We think the reason why PCA and GMM did not work on image data may because the image data itself does not contain enough information for this method to get a classifier, unlike other classical clustering problems like human face recognition or male and female recognition. The accuracy is not enough to beat the baseline 1, so we have to try different methods.
 
-Dimensionality Reduction
+PCA and GMM models did not predict well because the image data itself does not contain enough information for this method to get a classifier, unlike other classical clustering problems like human face recognition or male and female recognition. Our simple hypothesis was not true, suggesting that dark colors were found in tweets labeled as "joy" and bright colors were found in tweets in labeled as "sadness." 
 
-We tried to reduce the dimensionality of the $word_train$ data using Principal Component Analysis to determine if we could classify the data with a PC-ed version of the training data using a Gaussian Mixture Model. We used a 'holdout' of 20\% of the train data to use as testing because cross validation with PCA took too long.  
+!!! KMeans did not preform well  because !!! \\
 
-$$Graph with PCA/GMM error/accuracy$$
+The accuracy of preliminary models were not high enough to beat the Baseline 1, so we tried different methods.
 
-We found that even with 
-
-KMeans 
-
+\begin{figure}
+	\centering
+  \includegraphics[scale=0.4]{trainingerror.jpg}
+  \caption{Error of our Preliminary Methods}
+  \label{fig:Error}
+\end{figure}
 
 \section{Main Methods}
 
-Here we describe the combination of models we used in our model. 
+Here we describe the combination of models we used in our final model. We used our Naive Bayes model to beat Baseline 1, 78\%, and our final to beat Baseline 2 and the final submission. 
 
 
 \subsection{Naive Bayes}
 
-For supervised learning, Naive Bayes method is a very good generative method on classifying texts, like spam classification problem. Actually the words\_train data set uses bag of words model where counts of words matters and position of words does not matter. There are lots of advantages for Naive Bayes model, it can be a dependable baselien for text classification, it trains fast. Although the assumption of Naive Bayes which is the Conditional Independence Assumption may not be true, it may still work well on text classification problem.\\\\
+For supervised learning, Naive Bayes classification is an effective generative method for classifying texts, such as identifying spam in email. The words\_train data set uses bag of words model where counts of words matters and position of words does not matter. There are lots of advantages for Naive Bayes model, it can be a dependable baseline for text classification, it trains fast. Although the assumption of Naive Bayes which is the Conditional Independence Assumption may not be true, it may still work well on text classification problem.\\\\
 
 To use the Naive Bayes model on words\_train dataset, we use the built-in matlab function fitNaiveBayes. For trainning data, we sue 9-fold cross validation error to estimate the test error for Naive Bayes model, which means we randomly choose 4000 data to train and 500 data to test. For the built-in function fitNaiveBayes, there are some parameters for us to choose, for the distribution parameter, because we are using the bag-of-words model, we use the multinomial distribution in the fitNaiveBayes function. \\\\
 
-The Naive Bayes model actually works really well. We got around 0.8 cross validation accuracy on trainning data. And we got 0.7962 accuracy for the test data. We successfully beat the baseline1 using a simple Naive Bayes model with multinomial distribution. \\\\
+The Naive Bayes model actually works really well. We got around 0.8 cross validation accuracy on training data. And we got 0.7962 accuracy for the test data. We successfully beat the Baseline 1 using a simple Naive Bayes model with multinomial distribution. \\\\
 
 But there are still problems with the simple Naive Bayes model. For example, the dataset matrix for words is very sparse, and for each observation there are many  words did not show up. Naive Bayes model for text assumes that there is no information in words that are not observed and this may cause overfitting. We can solve this by smoothing the Naive Bayes model.
 
@@ -85,7 +78,7 @@ But there are still problems with the simple Naive Bayes model. For example, the
 
 The second main method we utilized was an ensemble method. We used GentleBoost, a weak learning that was built by MATLAB under the fitensemble function. The method combines many weak learners into one high quality ensemble predictor. We chose this ensemble methods over the others offered by MATLAB, because it is preforms well with binary classification trees with many predictors (ensemble citation). \\
 
-The input of the model was the $word_train$ data. We used a 10-fold cross validation method to observed how the model preformed, specified the use 300 learners, and the type of learner as 'tree'. The average cross validation error was 0.21. The algorithm classified joy and sadness well. \\
+The input of the model was the word\_train data. We used a 10-fold cross validation method to observed how the model preformed, specified the use 300 learners, and the type of learner as 'tree'. The average cross validation error was 0.21. The algorithm classified joy and sadness well. \\
 
 The method could have improved if we increased the number of learners, however it would have taken a very long time to train because the data is large. Initially we tried the method with the default number of learners, 100 trees, and found that the cross validation accuracy only improved slightly. This slight improvement with triple number of learners reveals that the data has some intricacies or patterns that the ensemble method cannot learn.   
 
@@ -152,13 +145,5 @@ Neutral tweets
 - Could have used deep learning 
 	too long, overfit, dataset small
 - articles 
-
-
-\section{Works Cited}
-\begin{thebibliography}{1}
-
-%\bibitem{ensemble} Documentation. Ensemble Methods - MATLAB & Simulink. N.p., n.d. Web. 11 Dec. 2016. 
-
-\end{thebibliography}
 
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  12 DEC 2016 13:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  12 DEC 2016 14:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -464,132 +464,125 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--41
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 40--41
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 42--43
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 42--43
+Underfull \hbox (badness 10000) in paragraph at lines 51--52
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 54--55
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 54--55
-
- []
+<trainingerror.jpg, id=1, 679.53876pt x 462.72874pt>
+File: trainingerror.jpg Graphic file (type jpg)
+ <use trainingerror.jpg>
+Package pdftex.def Info: trainingerror.jpg used on input line 57.
+(pdftex.def)             Requested size: 271.81068pt x 185.08821pt.
 
 [1
 
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 76--77
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--77
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 80--81
+Underfull \hbox (badness 10000) in paragraph at lines 73--74
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 80--81
+Underfull \hbox (badness 10000) in paragraph at lines 73--74
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--87
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
+
+ []
+
+[2 <./trainingerror.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--89
-
- []
-
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 106--107
-
- []
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 110.
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 110.
-
-Underfull \hbox (badness 10000) in paragraph at lines 110--111
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 115--116
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 117--118
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 103.
+
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 103.
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 108--109
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 110--111
 
  []
 
 <Method.jpg, id=19, 898.35625pt x 522.95375pt>
 File: Method.jpg Graphic file (type jpg)
  <use Method.jpg>
-Package pdftex.def Info: Method.jpg used on input line 125.
+Package pdftex.def Info: Method.jpg used on input line 118.
 (pdftex.def)             Requested size: 359.33614pt x 209.1778pt.
 
 <finalgraph.jpg, id=21, 679.53876pt x 462.72874pt>
 File: finalgraph.jpg Graphic file (type jpg)
  <use finalgraph.jpg>
-Package pdftex.def Info: finalgraph.jpg used on input line 132.
+Package pdftex.def Info: finalgraph.jpg used on input line 125.
 (pdftex.def)             Requested size: 271.81068pt x 185.08821pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--140
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
 
  []
 
-[4 <./Method.jpg>]
-
-LaTeX Warning: Empty `thebibliography' environment on input line 162.
-
-[5 <./finalgraph.jpg>] (./Report.aux)
+[4 <./Method.jpg>] [5 <./finalgraph.jpg>] (./Report.aux)
 Package logreq Info: Writing requests to 'Report.run.xml'.
 \openout1 = `Report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 8755 strings out of 493014
- 140622 string characters out of 6133351
- 563358 words of memory out of 5000000
- 12197 multiletter control sequences out of 15000+600000
+ 8761 strings out of 493014
+ 140737 string characters out of 6133351
+ 563366 words of memory out of 5000000
+ 12202 multiletter control sequences out of 15000+600000
  11446 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,7n,30p,1383b,672s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,6n,30p,1383b,672s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></
@@ -597,10 +590,10 @@ usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
 r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/
 local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/lo
 cal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Report.pdf (5 pages, 190175 bytes).
+Output written on Report.pdf (5 pages, 218736 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
+ 53 PDF objects out of 1000 (max. 8388607)
  34 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
