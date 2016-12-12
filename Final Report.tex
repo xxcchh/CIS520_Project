@@ -75,13 +75,6 @@ The rise in web and mobile based social networking has opened a stream of contin
 
 When starting the project, we thought that we should first experiment with different classification methods on the image data (train\_color, train\_img\_prob) because they were smaller datasets to observe how well they predicted our emotions of interest. Using our intuition, we hypothesized that the image data contained basic information about people's sentiments. For example, lighter and bright colors represent joy, darker colors represent sadness. We tried to reduce the image datasets by preforming Principal Component Analysis (PCA) with the idea that with the main principal components our model would fit the transformed data well and have a high testing accuracy. The PCA-ed data was an input into a Gaussian Mixture Model(GMM) with two clusters specified, where one cluster was joy and the other sadness. Similarly, we used the same apporach on the word\_train data. 10-fold cross validation is time intensive with PCA, so we used a 'holdout' of 20\% of the train data to use as testing because cross validation with PCA is time intensive. \\
 
-When starting the project, we thought that we should first experiment with different classification methods on image data like train\_color, train\_img\_prob because they were smaller datasets. Using our intuition we made the assumption that the image data contained basic information about people's sentiments. For example, lighter and bright colors represent joy, darker colors represent sadness. \\\\
-
-Because the image data always contains a lot of features, so the method we use for image data is PCA and Gaussian Mixture Model. With PCA, we can reduce the dimensions of features, with GMM, if it works, we may cluster the training data into two clusters, joy and sadness and thus get the trained classifier. \\\\
-
-For the training, we tried three datasets for PCA and GMM, that is train\_color, train\_img\_prob and train\_cnn\_feat. However, the results are not satisfying. The table below demonstrates the training accuracies with PCA and GMM on the three datasets.
-
-
 The results were not great (Figure 1). The image data train\_color, train\_img\_prob had high error between 0.40 and 0.50. The PCA and GMM model on train\_words had comparable error to the error of the same model trained on the image data. Kmeans preformed the worst out of all our preliminary models. We tried training the models by changing the number of clusters in the GMM and PCs in the PCA. The results were similar to our initial results. \\
 
 
@@ -209,10 +202,9 @@ Other methods we tried on words includes TF-IDF. TF-IDF is short for term freque
 %\bibitem{ensemble} Documentation. Ensemble Methods - MATLAB & Simulink. N.p., n.d. Web. 11 Dec. 2016. 
 
 \end{thebibliography}
->>>>>>> origin/master
 
 \section{Appendix}
 
-%\lstinputlisting[language=Python]{"./sentimental analysis with python.py"}
+\lstinputlisting[language=Python]{"./sentimental analysis with python.py"}
 
 \end{document}

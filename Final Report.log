@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  12 DEC 2016 16:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  12 DEC 2016 16:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -427,7 +427,7 @@ File: english.lbx 2016/05/14 v3.4 biblatex localization (PK/JW/AB)
 \@quotelevel=\count294
 \@quotereset=\count295
 
-No file "Final Report".aux.
+(./Final Report.aux)
 \openout1 = `"Final Report.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
@@ -450,6 +450,7 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file '"Final Report".bbl' not found.
+
 No file "Final Report".bbl.
 Package biblatex Info: Reference section=0 on input line 63.
 Package biblatex Info: Reference segment=0 on input line 63.
@@ -653,39 +654,28 @@ Missing character: There is no “ in font cmr10!
 
 LaTeX Warning: Empty `thebibliography' environment on input line 211.
 
-[6 <./FinalGraph.jpg>] (./Final Report.aux)
 
-LaTeX Warning: There were undefined references.
+! Package Listings Error: File `"./sentimental analysis with python(.py")' not 
+found.
 
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: py")
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.215 ...{"./sentimental analysis with python.py"}
+                                                  ^^M
+*** (cannot \read from terminal in nonstop modes)
 
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                "Final Report"
-(biblatex)                and rerun LaTeX afterwards.
-
-Package logreq Info: Writing requests to '"Final Report".run.xml'.
-\openout1 = `"Final Report.run.xml"'.
-
- ) 
+ 
 Here is how much of TeX's memory you used:
- 10017 strings out of 493014
- 159566 string characters out of 6133351
- 591723 words of memory out of 5000000
- 13442 multiletter control sequences out of 15000+600000
+ 10014 strings out of 493014
+ 159563 string characters out of 6133351
+ 591767 words of memory out of 5000000
+ 13439 multiletter control sequences out of 15000+600000
  9747 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,7n,36p,1391b,672s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
-/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></u
-sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr
-/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on "Final Report.pdf" (6 pages, 208869 bytes).
-PDF statistics:
- 48 PDF objects out of 1000 (max. 8388607)
- 30 compressed objects within 1 object stream
- 0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+!  ==> Fatal error occurred, no output PDF file produced!
