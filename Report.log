@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  12 DEC 2016 12:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  12 DEC 2016 13:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -560,27 +560,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 117--118
 <Method.jpg, id=19, 898.35625pt x 522.95375pt>
 File: Method.jpg Graphic file (type jpg)
  <use Method.jpg>
-Package pdftex.def Info: Method.jpg used on input line 122.
-(pdftex.def)             Requested size: 469.75499pt x 273.45364pt.
+Package pdftex.def Info: Method.jpg used on input line 125.
+(pdftex.def)             Requested size: 359.33614pt x 209.1778pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 135--136
+<finalgraph.jpg, id=21, 679.53876pt x 462.72874pt>
+File: finalgraph.jpg Graphic file (type jpg)
+ <use finalgraph.jpg>
+Package pdftex.def Info: finalgraph.jpg used on input line 132.
+(pdftex.def)             Requested size: 271.81068pt x 185.08821pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
 
  []
 
 [4 <./Method.jpg>]
 
-LaTeX Warning: Empty `thebibliography' environment on input line 158.
+LaTeX Warning: Empty `thebibliography' environment on input line 162.
 
-[5] (./Report.aux)
+[5 <./finalgraph.jpg>] (./Report.aux)
 Package logreq Info: Writing requests to 'Report.run.xml'.
 \openout1 = `Report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 8749 strings out of 493014
- 140517 string characters out of 6133351
- 563350 words of memory out of 5000000
- 12192 multiletter control sequences out of 15000+600000
+ 8755 strings out of 493014
+ 140622 string characters out of 6133351
+ 563358 words of memory out of 5000000
+ 12197 multiletter control sequences out of 15000+600000
  11446 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,7n,30p,1383b,672s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -591,10 +597,10 @@ usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
 r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/
 local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/lo
 cal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Report.pdf (5 pages, 153869 bytes).
+Output written on Report.pdf (5 pages, 190175 bytes).
 PDF statistics:
- 51 PDF objects out of 1000 (max. 8388607)
+ 52 PDF objects out of 1000 (max. 8388607)
  34 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

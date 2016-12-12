@@ -103,7 +103,7 @@ Lastly we optimized our SVM by using MATLABs built in method to optimize a cross
 
 \section{Final Method}
 
-Our final method utilizes sentiment analysis, the classification of text into categories of emotions. We used the vaderSentiment 2.4.1 package in Python. VADER is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media. The advantage of this analysis is that we can use this preliminary method to discern extremely positive and extremely negative tweets by assuming that there are no extremely positive words shown in negative sentences and vise versa. \\
+Our final method utilizes sentiment analysis, the classification of text into categories of emotions. We used the vaderSentiment 2.4.1 package in Python. VADER is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media. The advantage of this analysis is that we can use this preliminary method to discern extremely positive and extremely negative tweets by assuming that there are no extremely positive words shown in negative sentences and vise versa. We will describe the process of experimenting with two analyzes before selecting one to include in our final model. \\
 
 \subsection{Sentiment Analysis 1}
 
@@ -118,17 +118,21 @@ We ran the sentimental analysis on each raw tweet using VADER package. For all t
 
 \subsection{Ensemble Method}
 
+Our Ensemble Method ... 
+
 \begin{figure}
-  \includegraphics[width=\linewidth]{Method.jpg}
+	\centering
+  \includegraphics[scale=0.4]{Method.jpg}
   \caption{System Classification}
   \label{fig:System Classification}
 \end{figure}
 
-
-%Bar graph with the two errors 
-
-%confusion matrix 
-
+\begin{figure}
+	\centering
+  \includegraphics[scale=0.4]{finalgraph.jpg}
+  \caption{Test Error Final Models. The separate final models are in dark grey, and combined models with sentiment analysis are in light grey. The combined models have higher testing accuracy that the separate models. The combined model with sentiment analysis 2 preforms just as well as SVM. The model with Sentiment Analysis 1 has the highest testing accuracy.}
+  \label{fig:Test Error}
+\end{figure}
 
 \section{Discussion}
 
