@@ -3,6 +3,7 @@
 %\documentstyle[12pt,amsfonts]{article}
 %\documentstyle{article}
 \usepackage{biblatex}
+\usepackage{graphicx}
 
 \setlength{\topmargin}{-.5in}
 \setlength{\oddsidemargin}{0 in}
@@ -82,13 +83,7 @@ But there are still problems with the simple Naive Bayes model. For example, the
 
 \subsection{GentleBoost}
 
-The second main method we utilized was an ensemble method. 
-
-Benefits of ensemble methods 
-
-
-
-We used GentleBoost, a weak learning that was built by MATLAB under the fitensemble function. The method combines many weak learners into one high quality ensemble predictor. We chose this ensemble methods over the others offered by MATLAB, because it is preforms well with binary classification trees with many predictors (ensemble citation). \\
+The second main method we utilized was an ensemble method. We used GentleBoost, a weak learning that was built by MATLAB under the fitensemble function. The method combines many weak learners into one high quality ensemble predictor. We chose this ensemble methods over the others offered by MATLAB, because it is preforms well with binary classification trees with many predictors (ensemble citation). \\
 
 The input of the model was the $word_train$ data. We used a 10-fold cross validation method to observed how the model preformed, specified the use 300 learners, and the type of learner as 'tree'. The average cross validation error was 0.21. The algorithm classified joy and sadness well. \\
 
@@ -123,7 +118,11 @@ We ran the sentimental analysis on each raw tweet using VADER package. For all t
 
 \subsection{Ensemble Method}
 
-
+\begin{figure}
+  \includegraphics[width=\linewidth]{Method.jpg}
+  \caption{System Classification}
+  \label{fig:System Classification}
+\end{figure}
 
 
 %Bar graph with the two errors 
