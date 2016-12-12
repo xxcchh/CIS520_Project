@@ -109,9 +109,15 @@ An issue we came across is from our first sentiment analysis is that we did not 
 
 We ran the sentimental analysis on each raw tweet using VADER package. For all the words that appeared in this sentence, we attached the resulting score to those words. For every word, an average emotion score is then based on all the raw tweets. \\ 
 
-\subsection{Ensemble Method}
+\subsection{Final Method}
 
-Our Ensemble Method ... 
+Our final method beat Baseline 2 and received an accuracy of 81.82\%. 
+
+From the testing on training dataset, we found that Sentiment Analysis had a high accuracy predicting "sadness". So the intuition was really straight forward, if the test data calculated by Sentiment Analysis 1 has negative words and don't have positive words, we will label it as negative. Then how we deal with the tweets the Sentiment Analysis cannot predict? W Naive Bayes and SVM and GentleBoost all have a quite good accuracy on test data, so we use the combine of the three methods through majority vote to predict them.\\\\
+
+Figure 1 shows the structure of our final method. The majority vote goes in this way. We have three models predicting the test labels, if three of them all predict a tweet as sadness, we label this tweet as sad. If three of them all predict a tweet as joy, we will label them as joy. If any two of them predict a tweet as sadness, we label it as sadness. Finally if two of them predict a tweet as joy, we just use Naive Bayes results. Why in this situation we just use Naive Bayes instead of majority vote? Because the trainning accuracy tends to be higher for just use Naive Bayes in this situation than use majority vote.\\\\
+Actually we also tried using Sentimental Analysis 2 with the combination of the three methods. But the accuracy did not improve. It may because the new Sentiment Analysis did not have that strong predictive words like Sentiment Analysis 1 has. Or maybe the result of Sentiment Analysis 1 is more suitable to the testdata.
+
 
 \begin{figure}
 	\centering
@@ -144,6 +150,18 @@ Neutral tweets
 
 - Could have used deep learning 
 	too long, overfit, dataset small
+<<<<<<< HEAD
 - articles 
+=======
+- articles \\
+Other methods we tried on words includes TF-IDF. TF-IDF is short for term frequency–inverse document frequency, is a numerical statistic that is intended to reflect how important a word is to a document in a collection or corpus. It is often used as a weighting factor in information retrieval and text mining. We use this method to pretreat the train data and then use SVM or logistic regression methods to predict. However, the results are not satisfying. It may because the trainning data are too sparse and many of them did't show up, so the result of TF-IDF can not give us more information about the trainset.
+
+\section{Works Cited}
+\begin{thebibliography}{1}
+
+%\bibitem{ensemble} Documentation. Ensemble Methods - MATLAB & Simulink. N.p., n.d. Web. 11 Dec. 2016. 
+
+\end{thebibliography}
+>>>>>>> origin/master
 
 \end{document}
