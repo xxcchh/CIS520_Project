@@ -94,69 +94,47 @@ Here we describe the combination of models we used in our final model. We used o
 
 \subsection{Naive Bayes}
 
-For supervised learning, Naive Bayes classification is an effective generative method for classifying texts, such as identifying spam in email. The words\_train data set uses bag of words model where counts of words matters and position of words does not matter. There are lots of advantages for Naive Bayes model, it can be a dependable baseline for text classification, and it trains fast. Although the assumption of Naive Bayes which is the Conditional Independence Assumption may not be true, it may still work well on text classification problem.\\
+For supervised learning, Naive Bayes classification is an effective generative method for classifying texts, such as identifying spam in email. The words\_train data uses bag of words model where counts of words matters and position of words does not matter. Although the conditional independence assumption of  Naive Bayes may not be true, the method is a dependable baseline for text classification and it trains fast. \\
 
-For supervised learning, Naive Bayes method is a very good generative method on classifying texts, like spam classification problem. Actually the words\_train data set uses bag of words model where counts of words matters and position of words does not matter. There are lots of advantages for Naive Bayes model, it can be a dependable baseline for text classification, it trains fast. Although the assumption of Naive Bayes which is the Conditional Independence Assumption may not be true, it may still work well on text classification problem.\\
+We used the  Matlab function fitcnb on the words\_train dataset. To train the model, we used 10-fold cross validation and specified the bag-of-words model as the distribution parameter and the multinomial distribution. We chose these parameters because they had the lowest cross validation error of the other parameter specifications we tried.The model predicted very well, with a cross validation accuracy of 0.80 on the training, and 0.7962 on the test data (Figure 3). We successfully beat the Baseline 1 with this simple Naive Bayes model. \\
 
-To use the Naive Bayes model on words\_train dataset, we use the built-in Matlab function fitNaiveBayes. For training data, we sue 9-fold cross validation error to estimate the test error for Naive Bayes model, which means we randomly choose 4000 data to train and 500 data to test. For the built-in function fitNaiveBayes, there are some parameters for us to choose, for the distribution parameter, because we are using the bag-of-words model, we use the multinomial distribution in the fitNaiveBayes function. \\\\
-
-
-The Naive Bayes model actually works really well. We got around 0.8 cross validation accuracy on training data. And we got 0.7962 accuracy for the test data. We successfully beat the Baseline 1 using a simple Naive Bayes model with multinomial distribution. \\\\
-
-The Naive Bayes model actually works really well. We got around 0.8 cross validation accuracy on training data. And we got 0.7962 accuracy for the test data. We successfully beat the baseline1 using a simple Naive Bayes model with multinomial distribution. \\\\
->>>>>>> origin/master
-
-But there are still problems with the simple Naive Bayes model. For example, the dataset matrix for words is very sparse, and for each observation there are many  words did not show up. Naive Bayes model for text assumes that there is no information in words that are not observed and this may cause over-fitting. We can solve this by smoothing the Naive Bayes model.
+The dataset matrix for words is very sparse, and for each tweet there are thousands of words that do not appear. The Naive Bayes model for text classifications assumes that there is no information in words that are not observed and this may cause over-fitting. We can solve this by smoothing the Naive Bayes model, ensuring that each word gets a non-zero probability. The performance of the model drops when multiple features are correlated. We never checked the correlation between features, which could have been visualized with multiple sploms. 
 
 \subsection{GentleBoost}
 
-The second main method we utilized was an ensemble method. We used GentleBoost, a weak learning that was built by MATLAB under the fitensemble function. The method combines many weak learners into one high quality ensemble predictor. We chose this ensemble methods over the others offered by MATLAB, because it is preforms well with binary classification trees with many predictors (ensemble citation). \\
-
-The input of the model was the word\_train data. We used a 10-fold cross validation method to observed how the model preformed, specified the use 300 learners, and the type of learner as 'tree'. The average cross validation error was 0.21. The algorithm classified joy and sadness well. \\
+The second main method we utilized was an ensemble method. We used GentleBoost, a weak learning that was built by MATLAB under the fitensemble function. The method combines many weak learners into one high quality ensemble predictor. We chose this ensemble methods over the others offered by MATLAB, because it is preforms well with binary classification trees with many predictors. The input of the model was the word\_train data. We used a 10-fold cross validation method to observe how the model preformed, specified the use 300 learners, and the type of learner as 'tree'. The average cross validation error was 0.21 (Figure 3). The algorithm classified joy and sadness well. \\
 
 The method could have improved if we increased the number of learners, however it would have taken a very long time to train because the data is large. Initially we tried the method with the default number of learners, 100 trees, and found that the cross validation accuracy only improved slightly. This slight improvement with triple number of learners reveals that the data has some intricacies or patterns that the ensemble method cannot learn.   
 
 
 \subsection{Support Vector Machine}
 
-Support vector machines (SVMs) proved to the most promising method to classify the data. We used the MATLAB function, fitcsvm, to train an SVM model for binary classification on the on the word\_train data.
+Support vector machines (SVMs) proved to the most promising method to classify the data. We used the MATLAB function, fitcsvm, to train an SVM model for binary classification on the on the word\_train data.We tried a simple SVM by specifying a linear kernel, and had a  cross validation error was 0.2180. With a Gaussian or RBF kernel we had an error of 0.4373. After experimenting with a variety of kernels, we found that the linear preformed the best. fitsvm allows you to make an assumption about the fraction of outliers in the data. While we could have gone through the raw tweets and looked through the data, we decided to experiment with  10\%, 20\%, and 30\% and observed cross validation errors 0.2121, 0.2282, and 0.2131 respectively. Specifying the outliers percentage did not have an effect on our cross validation error, so we decided not to specify it in our SVM final model.  \\
 
-We tried a simple SVM by specifying a linear kernel, and had a  cross validation error was 0.2180. With a Gaussian or RBF kernel we had an error of 0.4373. 
+Lastly we optimized our SVM by using MATLABs built in method to optimize a cross-validated SVM using Bayes Optimization.  The method originates from The Elements of Statistical Learning, Hastie, Tibshirani, and Friedman (2009). Paraphrasing from the MATLAB documentation,  the model begins with generating 10 base points 2 classes. For each of the classes, it generates 100 random points. After 100 points for each class has been generated, the point are classified using fitcsvm. The function bayesopt is used to optimize the parameters of the final SVM model with respect to cross validation." We submitted the method to the autograder, and it had an accuracy of 0.7991 (Figure 3). The method was accurate enough to beat Baseline 1, but not Baseline 2. \\
 
-
-After experimenting with a variety of kernels, we found that the linear preformed the best. fitsvm allows you to make an assumption about the fraction of outliers in the data. While we could have gone through the raw tweets and looked through the data, we decided to experiment with  10\%, 20\%, and 30\% and observed cross validation errors 0.2121, 0.2282, and 0.2131 respectively. Specifying the outliers percentage did not have an effect on our cross validation error, so we decided not to specify in our SVM final model. 
-
-Lastly we optimized our SVM by using MATLABs built in method to optimize a cross-validated SVM using Bayes Optimization (citation). The method originates from The Elements of Statistical Learning, Hastie, Tibshirani, and Friedman (2009). Paraphrasing from the MATLAB documentation,  "the model begins with generating 10 base points for a "green" class, distributed as 2D independent normals with mean (1,0) and unite variance. It then generates 10 base points for a "class" that is also distributed as 2-D independent normals with mean (0,1) and unit variance. For each of the classes, it generate 100 random points by choosing a base point, b, of the respective color uniformly at random. It then generates an independent random point with 2-D normal distribution with mean b and variance I/5, where I is the 2-by-2 identity matrix. After 100 points for each of the colors has been generated, the point are classified using fitcsvm. The function bayesopt is used to optimize the parameters of the final SVM model with respect to cross validation." We submitted the method to the autograder, and it had an accuracy of 0.7991. The method was accurate enough to beat Baseline 1, but not Baseline 2. Similar to the other methods above, the optimized SVM may not preform well because the data was sparse and high dimensional, so the hyperplane could not separate data well. 
+The selection of parameters is essential for obtaining the most accurate SVM. The model did not preform well because we did not find the best way to tune the parameters. The data was sparse and high dimensional, so the hyperplane would be able to separate the data well. Another method we should have tried is a logistic regression.
 
 \section{Final Method}
 
-Our final method utilizes sentiment analysis, the classification of text into categories of emotions. We used the vaderSentiment 2.4.1 package in Python. VADER is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media. The advantage of this analysis is that we can use this preliminary method to discern extremely positive and extremely negative tweets by assuming that there are no extremely positive words shown in negative sentences and vise versa. We will describe the process of experimenting with two analyzes before selecting one to include in our final model. \\
+Our final method utilizes sentiment analysis, the classification of text into categories of emotions. We used the vaderSentiment 2.4.1 package in Python. VADER is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media. The advantage of this analysis is that we can use this preliminary method to discern extremely positive and extremely negative tweets by assuming that there are no extremely positive words shown in negative sentences and vise versa. We will describe the process of experimenting with two analyzes before selecting one to include in our final model.
 
 \subsection{Sentiment Analysis 1}
 
-In Python, we ran a sentimental analysis on each word present in the topwords\.csv. The input was each individual word in the list, and the output was the probability the word expresses a negative, positive, and neutral emotion. The output often looks like this, when type "funny" we can see \{'compound': 0.4404, 'neg': 0.0, 'neu': 0.0, 'pos': 1.0\}, which means it is an extremely positive word. \\
-
+In Python, we ran a sentimental analysis on each word present in the topwords\.csv (Appendix). The input was each individual word in the list, and the output was the probability the word expresses a negative, positive, and neutral emotion. The output often looks like this, when type "funny" we can see \{'compound': 0.4404, 'neg': 0.0, 'neu': 0.0, 'pos': 1.0\}, which means it is an extremely positive word.
 
 \subsection{Sentiment Analysis 2}
 
-An issue we came across is from our first sentiment analysis is that we did not consider the raw tweets containing words that began with \#. These hash tags may represent the topic this sentence belongs to, some specific topics always express similar emotions, like \#family usually expresses a positive emotion. So instead of analyzing the sentiment of each word, we used sentence as the input and received the average emotion scores of each word.\\
-
-We ran the sentimental analysis on each raw tweet using VADER package. For all the words that appeared in this sentence, we attached the resulting score to those words. For every word, an average emotion score is then based on all the raw tweets. \\ 
+We did not consider the raw tweets containing words beginnings with \#. These hash tags may represent the topic this sentence belongs to, some specific topics always express similar emotions, like \#family usually expresses a positive emotion. So instead of analyzing the sentiment of each word, we used sentence as the input and received the average emotion scores of each word.We ran the sentimental analysis on each raw tweet. For all the words that appeared in this sentence, we attached the resulting score to those words. For every word, an average emotion score is then based on all the raw tweets.
 
 \subsection{Final Method}
 
-Our final method beat Baseline 2 and received an accuracy of 81.82\%. 
-
-From the testing on training dataset, we found that Sentiment Analysis had a high accuracy predicting "sadness". So the intuition was really straight forward, if the test data calculated by Sentiment Analysis 1 has negative words and don't have positive words, we will label it as negative. Then how we deal with the tweets the Sentiment Analysis cannot predict? W Naive Bayes and SVM and GentleBoost all have a quite good accuracy on test data, so we use the combine of the three methods through majority vote to predict them.\\\\
-
-Figure 1 shows the structure of our final method. The majority vote goes in this way. We have three models predicting the test labels, if three of them all predict a tweet as sadness, we label this tweet as sad. If three of them all predict a tweet as joy, we will label them as joy. If any two of them predict a tweet as sadness, we label it as sadness. Finally if two of them predict a tweet as joy, we just use Naive Bayes results. Why in this situation we just use Naive Bayes instead of majority vote? Because the trainning accuracy tends to be higher for just use Naive Bayes in this situation than use majority vote.\\\\
-
-Actually we also tried using Sentimental Analysis 2 with the combination of the three methods. But the accuracy did not improve. It may because the new Sentiment Analysis did not have that strong predictive words like Sentiment Analysis 1 has. Or maybe the result of Sentiment Analysis 1 is more suitable to the testdata.
+Our final method beat Baseline 2 and received an accuracy of 81.82\%. We trained the model 80\% of the training data and tested on the hold out data. The Sentiment Analysis predicted "sadness" with a 90\% accuracy. So the intuition was straight forward, if the hold out data calculated by Sentiment Analysis 1 had negative words and no positive words, we labeled it as negative. With the data the Sentiment Analysis would not predict, we had our Naive Bayes, SVM, and Gentle Boost models predict a label and decide the final label with a majority vote.Figure 2 details the structure of our final method. We have three models predicting the test labels, if three of them  predict a tweet as sadness, the label is sad, and similiarly for joy. If any two of them predict a tweet as sadness, we label it as sadness. Finally, if two of them predict a tweet as joy, we use the Naive Bayes label. Interestingly we observed that Naive Bayes have a higher training accuracy predicting joy than using majority vote method. We tried the same method with Sentimental Analysis 2, but the accuracy decreased (Figure 3). It may because the new Sentiment Analysis did not have that strong predictive words like Sentiment Analysis 1, or maybe the result of Sentiment Analysis 1 is more suitable to the test data.
 
 
 \begin{figure}
 	\centering
-  \includegraphics[scale=0.4]{Method.jpg}
+  \includegraphics[scale=0.35]{Method.jpg}
   \caption{System Classification}
   \label{fig:System Classification}
 \end{figure}
@@ -170,34 +148,9 @@ Actually we also tried using Sentimental Analysis 2 with the combination of the 
 
 \section{Discussion}
 
-Sentiment analysis is a difficult problem because human emotion is multifaceted and varies in intensity. In person, understanding the emotion a person is based on several parameters, the context of what they're saying, their words, tone, body language, and facial expression. Our classification problem is more difficult because we are given short tweets with a corresponding image. \\
+Other methods we tried on words includes TF-IDF. TF-IDF is short for term frequency–inverse document frequency, and is a numerical statistic that is intended to reflect how important a word is to a document in a collection. We used this method to transform the words\_train data and then used SVM or logistic regression methods to predict labels. The errors were high, probably due to the fact that the the training data are too sprase a It may because the training data are too sparse, which is the nature of tweets.  \\
 
-One issue 
-Issues with Lexicon
-Developing the content of the lexicon is subjective. The use of language changes - how old is the lexicon being used? We don't know if the lexicon is comprehensive enough. Lexicon with emojis. 
-
-What would our future method look like?
-- Train classifier that train on emojis and hashtags since they are usually represent the topic of the tweet
-
-
-Neutral tweets 
-
-
-- Could have used deep learning 
-	too long, overfit, dataset small
-<<<<<<< HEAD
-- articles 
-=======
-- articles \\
-Other methods we tried on words includes TF-IDF. TF-IDF is short for term frequency–inverse document frequency, is a numerical statistic that is intended to reflect how important a word is to a document in a collection or corpus. It is often used as a weighting factor in information retrieval and text mining. We use this method to transform the train data and then use SVM or logistic regression methods to predict. However, the results are not satisfying. It may because the training data are too sparse and many of them didn't show up, so the result of TF-IDF can not give us more information about the train set.
-
-\section{Works Cited}
-\begin{thebibliography}{1}
-
-%\bibitem{ensemble} Documentation. Ensemble Methods - MATLAB & Simulink. N.p., n.d. Web. 11 Dec. 2016. 
-
-\end{thebibliography}
-
+Classifying emotion is a difficult problem because human emotion is multifaceted and varies in intensity. In person, understanding the emotion a person is based on several parameters like the context of what they're saying, their words, tone, body language, and facial expression. Our classification problem is more difficult because we are given short tweets with a corresponding image. One idea to improve our method is by using a more update lexicon, assuming that the tweets are from 2015 or 2016. The lexicon used in the vaderSentiment 2.4.1 package is from 2014. In the last two years language in tweets has changed with the use of more emojis, hastags, 'fad' words such as 'bae', and the decrease in emoticons. An interesting method that we could have tried if we had time would be to train a classifer on emojis, emoticons, and hashtags. The three pieces generally represent the topic or feeling of a tweet. It would be interesting to test that hypothesis. 
 \section{Appendix}
 
 \lstinputlisting[language=Python]{"./sentimental analysis with python.py"}
